@@ -1,0 +1,23 @@
+.ajax-loader{
+  display: none;
+  margin:0 auto;
+  max-width: 100px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+.brasa-vesta-cadastra-page #content {
+  padding-top: 25px;
+}
+.brasa-vesta-cadastra-page #content .resultado{
+  min-height: 50px;
+}
+.brasa-vesta-cadastra-page #content .relaxe{
+  height: 256px;
+  width:355px ;
+  display: none;
+  background: url('../images/relaxe.gif')
+}
+#form-lote-user{
+  /*display:none;*/
+}
