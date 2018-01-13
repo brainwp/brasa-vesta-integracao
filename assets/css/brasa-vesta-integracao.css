@@ -18,6 +18,10 @@
   display: none;
   background: url('../images/relaxe.gif')
 }
-#form-lote-user{
+#form-lote-user {
   /*display:none;*/
+}
+#form-lote-web,
+#form-lote-banco {
+  display: none;
 }

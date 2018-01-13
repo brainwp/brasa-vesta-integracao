@@ -1,35 +1,7 @@
-
 <?php
 /**
  * Template Name: Cadastra Lote
- *
- *
  */
-//
-// $post= $_POST;
-// $html="";
-// if ($post['acao'] == 'tudo') {
-// 	cria_tudo($post['user'],
-// 	$post['senha'],
-// 	$post['nome'],
-// 	$post['sobrenome'],
-// 	$post['email'],
-// 	$post['dominio'],
-// 	'base',
-// 	'base',
-// 	$post['senha_base']);
-// 	$html = "<h3 style='color:red'>As vezes demora para propagar o domínio.</h3><a style='color:red' href='http://".$post['dominio']."' target='_blank' > Instalar o Wordpress</a>";
-// }
-
-// cria_tudo('teste_cli8',
-// 'teste_cli8',
-// 'teste_cli8 nome',
-// 'teste_cli8 sobre',
-// 'brmagrini@gmail.com',
-// 'testecli8.brunomagrini.com.br',
-// 'base',
-// 'base',
-// 'senha_base');
 get_header(); ?>
 
 <div class="wrap">
@@ -43,27 +15,20 @@ get_header(); ?>
 
 			// echo $html; ?>
 
+			<h2>Cadastro de Lotes no Sítio Brasa:</h2>
+			<p>Preencha e envie cada formuário separadamente e em ordem.</p>
 
-
-      <?php
-				$user=$_GET['user'];
-				$senha=$_GET['senha'];
-				$nome=$_GET['nome'];
-				$sobrenome=$_GET['sobrenome'];
-				$email=$_GET['email'];
-				$endereco=$_GET['endereco'];
-				$nome_base=$_GET['nome_base'];
-				$senha_base=$_GET['senha_base'];
-				$nomeusuario_base=$_GET['usuario_base'];
-			?>
-			<h2>Cadastrar Tudo:</h2>
 			<?php
 			// echo "</pre>";
 			// print_r($_POST);
 			?>
-			<img class="ajax-loader" src="<?php echo BRASA_VESTA_PLUGIN_URL."assets/images/loader.gif" ?>" alt="ajax_loader">
+			<img class="ajax-loader" src="<?php echo BRASA_VESTA_PLUGIN_URL . "assets/images/loader.gif" ?>" alt="ajax_loader">
 
 			<form id="form-lote-user" class="form-lote" action="" method="post">
+
+				<h3>Passo 1:</h3>
+				<p>O formuário abaixo cria o usuário no Vesta.</p>
+
 				<input type="text" name="user"  placeholder="Nome de usuário">
 				<input type="password" name="senha"   placeholder="Senha">
 				<input type="password" name="senhaconf"   placeholder="Confirme a senha">
@@ -72,56 +37,36 @@ get_header(); ?>
 				<input type="email" name="email"   placeholder="E-mail">
 				<input type="submit" id="btn-cria-tudo" value="Cadastrar" />
 				<input type="hidden" name="acao" value="cria_user" />
-				<div class="resultado">
-
-				</div>
-
 			</form>
+
+			<hr>
+
 			<form id="form-lote-web" class="form-lote" action="" method="post">
-
-				<select class="" name="user">
-					<?php
-						$consulta = new Comunica_vesta();
-						$users= $consulta->lista_user();
-						foreach ($users as $user => $value) {
-							// print_r($user);
-
-							if ($value['PACKAGE'] == 'basico') {
-								echo "<option value='".$user."'>".$user."</option>";
-							}
-						}
-					?>
-				</select>
+				
+				<h3>Passo 2:</h3>
+				<p>Preencha abaixo com o domínio do seu site.</p>
+				
 				<input type="text" name="dominio"   placeholder="Domínio">
 				<input type="submit" id="btn-cria-tudo" value="Criar" />
 				<input type="hidden" name="acao" value="cria_web" />
-				<div class="resultado">
-
-				</div>
+				<input type="hidden" id="hidden-user" name="user" />
 			</form>
-			<form id="form-lote-banco" class="form-lote" action="" method="post">
-				<select class="" name="user">
-					<?php
-						$consulta = new Comunica_vesta();
-						$users= $consulta->lista_user();
-						foreach ($users as $user => $value) {
-							// print_r($user);
 
-							if ($value['PACKAGE'] == 'basico') {
-								echo "<option value='".$user."'>".$user."</option>";
-							}
-						}
-					?>
-				</select>
+			<hr>
+
+			<form id="form-lote-banco" class="form-lote" action="" method="post">
+
+				<h3>Passo 3:</h3>
+				<p>Crie o banco de dados.</p>
+
 				<input type="password" name="senha_base"   placeholder="Senha do banco">
 				<input type="password" name="senha_baseconf"   placeholder="Confirme a senha do banco">
 				<input type="submit" id="btn-cria-tudo" value="Criar" />
 				<input type="hidden" name="acao" value="cria_banco" />
-				<div class="resultado">
-
-				</div>
+				<input type="hidden" id="hidden-banco" name="user" />
 			</form>
 
+			<div id="resultado"></div><!-- resutado -->
 
 
 		</main><!-- #main -->

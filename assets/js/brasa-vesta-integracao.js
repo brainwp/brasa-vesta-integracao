@@ -1,4 +1,4 @@
-jQuery( document ).ready(function() {
+	jQuery( document ).ready(function() {
 		jQuery( "#tabs" ).tabs({
 		  active: 3
 		});
@@ -12,7 +12,7 @@ jQuery( document ).ready(function() {
 	function ajax_lote(elemento){
 		jQuery(elemento).fadeOut();
 		jQuery('.ajax-loader').fadeIn().css("display","block");;
-		jQuery(elemento).children('.resultado').html( "Executando ação...");
+		jQuery('#resultado').html( "Executando ação...");
 		var formData = jQuery( elemento ).serializeArray();
 		// console.log('Formdata: ');
 		// console.log(formData);
@@ -29,16 +29,29 @@ jQuery( document ).ready(function() {
 		console.log(formulario);
 		jQuery.post(my_ajax_obj.ajax_url,dados, function(response) {
 			if (jQuery.trim(response) == "OK") {
-				jQuery(formulario).children('.resultado').html( "OK.");
-				dados.action = 'lista_user';
-				jQuery.post(my_ajax_obj.ajax_url,dados, function(response) {
+				jQuery('#resultado').html( "OK.");
+
+				if ( dados.action == "cria_user" ) {
+					jQuery( '#hidden-user' ).attr( 'value', dados['user'] );
+					jQuery( '#hidden-banco' ).attr( 'value', dados['user'] );
+					jQuery( '#form-lote-user' ).fadeOut();
+					jQuery( '#form-lote-web' ).fadeIn();
+				} else if( dados.action == "cria_web" ) {
+					jQuery( '#form-lote-web' ).fadeOut();
+					jQuery( '#form-lote-banco' ).fadeIn();
+				} else {
+					jQuery( '#form-lote-banco' ).fadeOut();
+				}
+
+				// dados.action = 'lista_user';
+
+				/*jQuery.post(my_ajax_obj.ajax_url,dados, function(response) {
 					var opcoes=response;
 					console.log(formulario);
 					jQuery("select").each(function( index ) {
 	  				jQuery(this).html(opcoes);
 					});
-				});
-
+				});*/
 
 				jQuery('.ajax-loader').fadeOut();
 				jQuery(formulario).children('input').each(function(){
@@ -54,7 +67,7 @@ jQuery( document ).ready(function() {
 				var elemento = jQuery("input[name='"+jQuery.trim(response)+"']");
 				var campo = jQuery(elemento).attr('placeholder')
 				jQuery(elemento).css('border-color','red');
-				jQuery(formulario).children('.resultado').html( "Problema!!<br>Preencha o campo "+campo);
+				jQuery('#resultado').html( "Problema!!<br>Preencha o campo "+campo);
 				jQuery(formulario).fadeIn();
 				jQuery('.ajax-loader').fadeOut();
 				console.log('aqui');
@@ -63,8 +76,8 @@ jQuery( document ).ready(function() {
 			else{
 				console.log('ali');
 				jQuery(elemento).css('border-color','#bbb');
-				jQuery('.resultado').html("");
-				jQuery(formulario).children('.resultado').html( "Problema !!!<br>"+response);
+				jQuery('#resultado').html("");
+				jQuery('#resultado').html( "Problema !!!<br>"+response);
 				jQuery(formulario).fadeIn();
 				jQuery('.ajax-loader').fadeOut();
 			}
