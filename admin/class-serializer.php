@@ -55,6 +55,14 @@ class Serializer {
      if ( null !== wp_unslash( $_POST['brasa-vesta-ssl'] ) ) {
          update_option( 'brasa-vesta-ssl', true );
      }
+     if ( null !== wp_unslash( $_POST['brasa-vesta-ambiente'] ) ) {
+        // if ($_POST['brasa-vesta-ambiente'] == 'nenhum') {
+        //   # code...
+        // }
+        $brasa_vesta_ambiente = sanitize_text_field( $_POST['brasa-vesta-ambiente'] );
+
+         update_option( 'brasa-vesta-ambiente', $brasa_vesta_ambiente );
+     }
      else{
        update_option( 'brasa-vesta-ssl', false );
 

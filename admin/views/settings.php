@@ -3,7 +3,7 @@
     <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
     <form method="post" action="<?php echo esc_html( admin_url( 'admin-post.php' ) ); ?>">
 
-        <div id="universal-message-container">
+        <div id="brasa-vesta-info-login">
             <h2>Informações de login</h2>
                 <p>
                     <label>Usuário VestaCP</label>
@@ -38,7 +38,7 @@
                 </p>
 
         </div><!-- #universal-message-container -->
-        <div id="universal-message-container">
+        <div id="brasa-vesta-paginas">
             <h2>Páginas padrão</h2>
             <label>Página de Cadastro dos sites</label>
             <br />
@@ -46,10 +46,19 @@
 
             <br />
             <br />
-            
+
             <label>Página de listagem dos sites</label>
             <br />
             <?php $this->pega_paginas('lista', $this->deserializer->get_value( 'brasa-vesta-lista-page' )); ?>
+
+        </div><!-- #universal-message-container -->
+        <div  id="brasa-vesta-ambiente">
+            <h2>Ambiente onde está instalado o plugin</h2>
+            <select name="brasa-vesta-ambiente">
+              <option value="prod" <?php if (esc_attr( $this->deserializer->get_value( 'brasa-vesta-ambiente' ) ) == 'prod') {echo 'selected';} ?>>Produção</option>
+              <option value="beta" <?php if (esc_attr( $this->deserializer->get_value( 'brasa-vesta-ambiente' ) ) == 'beta') {echo 'selected';} ?>>Beta</option>
+              <option value="dev" <?php if (esc_attr( $this->deserializer->get_value( 'brasa-vesta-ambiente' ) ) == 'dev') {echo 'selected';} ?>>Desenvolvimento</option>
+            </select>
 
         </div><!-- #universal-message-container -->
         <?php

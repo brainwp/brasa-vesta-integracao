@@ -7,17 +7,12 @@
  *
  * @link              http://code.tutsplus.com/tutorials/creating-custom-admin-pages-in-wordpress-1
  * @since             1.0.0
- * @package           Custom_Admin_Settings
+ * @package           Brasa_vesta
  *
  * @wordpress-plugin
- * Plugin Name:       Custom Admin Settings
- * Plugin URI:        http://code.tutsplus.com/tutorials/creating-custom-admin-pages-in-wordpress-1
- * Description:       Demonstrates how to write custom administration pages in WordPress.
+ * Plugin Name:       Brasa + VestaCP integração
  * Version:           1.0.0
- * Author:            Tom McFarlin
- * Author URI:        https://tommcfarlin.com
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * Author:            Equipe Brasa
  */
 
 // If this file is called directly, abort.
