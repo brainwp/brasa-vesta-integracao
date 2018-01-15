@@ -55,9 +55,9 @@
         <div  id="brasa-vesta-ambiente">
             <h2>Ambiente onde está instalado o plugin</h2>
             <select name="brasa-vesta-ambiente">
-              <option value="prod" <?php if (esc_attr( $this->deserializer->get_value( 'brasa-vesta-ambiente' ) ) == 'prod') {echo 'selected';} ?>>Produção</option>
-              <option value="beta" <?php if (esc_attr( $this->deserializer->get_value( 'brasa-vesta-ambiente' ) ) == 'beta') {echo 'selected';} ?>>Beta</option>
-              <option value="dev" <?php if (esc_attr( $this->deserializer->get_value( 'brasa-vesta-ambiente' ) ) == 'dev') {echo 'selected';} ?>>Desenvolvimento</option>
+              <option value="p" <?php if (esc_attr( $this->deserializer->get_value( 'brasa-vesta-ambiente' ) ) == 'prod') {echo 'selected';} ?>>Produção</option>
+              <option value="b" <?php if (esc_attr( $this->deserializer->get_value( 'brasa-vesta-ambiente' ) ) == 'beta') {echo 'selected';} ?>>Beta</option>
+              <option value="d" <?php if (esc_attr( $this->deserializer->get_value( 'brasa-vesta-ambiente' ) ) == 'dev') {echo 'selected';} ?>>Desenvolvimento</option>
             </select>
 
         </div><!-- #universal-message-container -->

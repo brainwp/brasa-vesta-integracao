@@ -23,8 +23,8 @@ foreach ($_POST as $key => $value) {
   $email=$_POST['email'];
   $nome=$_POST['nome'];
   $senha=$_POST['senha'];
-  $senha_base=$_POST['senha_base'];
-  $senha_baseconf=$_POST['senha_baseconf'];
+  $senha_banco=$_POST['senha_banco'];
+  $senha_bancoconf=$_POST['senha_bancoconf'];
   $senhaconf=$_POST['senhaconf'];
   $sobrenome=$_POST['sobrenome'];
   $user=$_POST['user'];
@@ -35,7 +35,7 @@ foreach ($_POST as $key => $value) {
     echo "Senha inválida ou diferente da verificação.";
     wp_die();
   }
-  if ($senha_base != $senha_baseconf) {
+  if ($senha_banco != $senha_bancoconf) {
     echo "Senha do banco inválida ou diferente da verificação.";
     wp_die();
   }
@@ -64,13 +64,13 @@ function brasa_vesta_cria_lote_2() {
   $email=$_POST['email'];
   $nome=$_POST['nome'];
   $senha=$_POST['senha'];
-  $senha_base=$_POST['senha_base'];
-  $senha_baseconf=$_POST['senha_baseconf'];
+  $senha_banco=$_POST['senha_banco'];
+  $senha_bancoconf=$_POST['senha_bancoconf'];
   $senhaconf=$_POST['senhaconf'];
   $sobrenome=$_POST['sobrenome'];
   $user=$_POST['user'];
   $consulta = new Comunica_vesta();
-  $cria_web= $consulta->cria_web($user,$dominio,$senha_base);
+  $cria_web= $consulta->cria_web($user,$dominio,$senha_banco);
   echo $cria_web;
 // Problemas na API - a função cria_web conecta com a API do vesta usando o comando v-add-domain que está retornando o erro "WEB_DOMAINS limit is reached :: upgrade user package" apesar de criar o dominio corretamente.
 // Até onde euy cheguei na investigação e parece que o scrip v-add-domain está dsendo chamado duas vezes.
@@ -88,15 +88,15 @@ function brasa_vesta_cria_lote_3() {
   $email=$_POST['email'];
   $nome=$_POST['nome'];
   $senha=$_POST['senha'];
-  $senha_base=$_POST['senha_base'];
-  $senha_baseconf=$_POST['senha_baseconf'];
+  $senha_banco=$_POST['senha_banco'];
+  $senha_bancoconf=$_POST['senha_bancoconf'];
   $senhaconf=$_POST['senhaconf'];
   $sobrenome=$_POST['sobrenome'];
   $user=$_POST['user'];
-  $nome_base = 'bd';
-  $usuario_base = 'bd';
+  $nome_banco = 'bd';
+  $usuario_banco = 'bd';
   $consulta = new Comunica_vesta();
-  $cria_banco= $consulta->cria_banco($user,$nome_base,$usuario_base,$senha_base);
+  $cria_banco= $consulta->cria_banco($user,$nome_banco,$usuario_banco,$senha_banco);
   echo $cria_banco;
   wp_die();
 }
@@ -127,7 +127,7 @@ function brasa_vesta_cria_user() {
     echo "Senha inválida ou diferente da verificação.";
     wp_die();
   }
-  if ($senha_base != $senha_baseconf) {
+  if ($senha_banco != $senha_bancoconf) {
     echo "Senha do banco inválida ou diferente da verificação.";
     wp_die();
   }
@@ -169,7 +169,7 @@ function brasa_vesta_cria_web() {
   }
 
   $consulta = new Comunica_vesta();
-  $cria_web= $consulta->cria_web($user,$dominio,$senha_base);
+  $cria_web= $consulta->cria_web($user,$dominio,$senha_banco);
 
 // Problemas na API - a função cria_web conecta com a API do vesta usando o comando v-add-domain que está retornando o erro "WEB_DOMAINS limit is reached :: upgrade user package" apesar de criar o dominio corretamente.
 // Até onde euy cheguei na investigação e parece que o scrip v-add-domain está dsendo chamado duas vezes.
@@ -192,16 +192,16 @@ function brasa_vesta_cria_banco() {
       $$key = $value;
     }
   }
-  if ($senha_base != $senha_baseconf) {
+  if ($senha_banco != $senha_bancoconf) {
     echo "Senha do banco inválida ou diferente da verificação.";
     wp_die();
   }
-  $nome_base = 'bd';
-  $usuario_base = 'bd';
+  $nome_banco = 'bd_'.$this->deserializer->get_value( 'brasa-vesta-ambiente' );
+  $usuario_banco = 'bd';
   $consulta = new Comunica_vesta();
-  $cria_banco= $consulta->cria_banco($user,$nome_base,$usuario_base,$senha_base);
+  $cria_banco= $consulta->cria_banco($user,$nome_banco,$usuario_banco,$senha_banco);
   if ($cria_banco == "OK") {
-    $lote = $consulta->teste_api('v-teste',$user,$senha_base);
+    $lote = $consulta->teste_api('v-teste',$user,$senha_banco);
     echo $lote;
     wp_die();
   }

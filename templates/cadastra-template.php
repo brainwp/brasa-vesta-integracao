@@ -42,10 +42,10 @@ get_header(); ?>
 			<hr>
 
 			<form id="form-lote-web" class="form-lote" action="" method="post">
-				
+
 				<h3>Passo 2:</h3>
 				<p>Preencha abaixo com o domínio do seu site.</p>
-				
+
 				<input type="text" name="dominio"   placeholder="Domínio">
 				<input type="submit" id="btn-cria-tudo" value="Criar" />
 				<input type="hidden" name="acao" value="cria_web" />
@@ -59,8 +59,8 @@ get_header(); ?>
 				<h3>Passo 3:</h3>
 				<p>Crie o banco de dados.</p>
 
-				<input type="password" name="senha_base"   placeholder="Senha do banco">
-				<input type="password" name="senha_baseconf"   placeholder="Confirme a senha do banco">
+				<input type="password" name="senha_banco"   placeholder="Senha do banco">
+				<input type="password" name="senha_bancoconf"   placeholder="Confirme a senha do banco">
 				<input type="submit" id="btn-cria-tudo" value="Criar" />
 				<input type="hidden" name="acao" value="cria_banco" />
 				<input type="hidden" id="hidden-banco" name="user" />
