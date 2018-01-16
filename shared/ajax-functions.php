@@ -169,7 +169,7 @@ function brasa_vesta_cria_web() {
   }
 
   $consulta = new Comunica_vesta();
-  $cria_web= $consulta->cria_web($user,$dominio,$senha_banco);
+  $cria_web= $consulta->cria_web($user,$dominio);
 
 // Problemas na API - a função cria_web conecta com a API do vesta usando o comando v-add-domain que está retornando o erro "WEB_DOMAINS limit is reached :: upgrade user package" apesar de criar o dominio corretamente.
 // Até onde euy cheguei na investigação e parece que o scrip v-add-domain está dsendo chamado duas vezes.

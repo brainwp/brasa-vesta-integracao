@@ -35,7 +35,7 @@ get_header(); ?>
 				<input type="text" name="nome"   placeholder="Nome">
 				<input type="text" name="sobrenome"   placeholder="Sobrenome">
 				<input type="email" name="email"   placeholder="E-mail">
-				<input type="submit" id="btn-cria-tudo" value="Cadastrar" />
+				<input type="submit" id="btn-cria-tudo-1" value="Cadastrar" />
 				<input type="hidden" name="acao" value="cria_user" />
 			</form>
 
@@ -47,7 +47,7 @@ get_header(); ?>
 				<p>Preencha abaixo com o domínio do seu site.</p>
 
 				<input type="text" name="dominio"   placeholder="Domínio">
-				<input type="submit" id="btn-cria-tudo" value="Criar" />
+				<input type="submit" id="btn-cria-tudo-2" value="Criar" />
 				<input type="hidden" name="acao" value="cria_web" />
 				<input type="hidden" id="hidden-user" name="user" />
 			</form>
@@ -61,7 +61,7 @@ get_header(); ?>
 
 				<input type="password" name="senha_banco"   placeholder="Senha do banco">
 				<input type="password" name="senha_bancoconf"   placeholder="Confirme a senha do banco">
-				<input type="submit" id="btn-cria-tudo" value="Criar" />
+				<input type="submit" id="btn-cria-tudo-3" value="Criar" />
 				<input type="hidden" name="acao" value="cria_banco" />
 				<input type="hidden" id="hidden-banco" name="user" />
 			</form>

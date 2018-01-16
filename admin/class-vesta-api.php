@@ -116,7 +116,7 @@ class Comunica_vesta {
     }
 
 
-    public function cria_web($user,$dominio,$senha_banco)
+    public function cria_web($user,$dominio)
     {
 
       $vst_command = 'v-add-domain';

@@ -26,22 +26,13 @@
 		}			//
 		dados.action = dados['acao'];
 		dados._ajax_nonce = my_ajax_obj.nonce;
-		console.log(formulario);
+		console.log(dados);
+
 		jQuery.post(my_ajax_obj.ajax_url,dados, function(response) {
 			if (jQuery.trim(response) == "OK") {
 				jQuery('#resultado').html( "OK.");
 
-				if ( dados.action == "cria_user" ) {
-					jQuery( '#hidden-user' ).attr( 'value', dados['user'] );
-					jQuery( '#hidden-banco' ).attr( 'value', dados['user'] );
-					jQuery( '#form-lote-user' ).fadeOut();
-					jQuery( '#form-lote-web' ).fadeIn();
-				} else if( dados.action == "cria_web" ) {
-					jQuery( '#form-lote-web' ).fadeOut();
-					jQuery( '#form-lote-banco' ).fadeIn();
-				} else {
-					jQuery( '#form-lote-banco' ).fadeOut();
-				}
+
 
 				// dados.action = 'lista_user';
 
@@ -60,7 +51,17 @@
 					}
 				});
 				jQuery(elemento).css('border-color','#bbb');
-				jQuery(formulario).fadeIn();
+				if ( dados.action == "cria_user" ) {
+					jQuery( '#hidden-user' ).attr( 'value', dados['user'] );
+					jQuery( '#hidden-banco' ).attr( 'value', dados['user'] );
+					jQuery( '#form-lote-user' ).fadeOut();
+					jQuery( '#form-lote-web' ).fadeIn();
+				} else if( dados.action == "cria_web" ) {
+					jQuery( '#form-lote-web' ).fadeOut();
+					jQuery( '#form-lote-banco' ).fadeIn();
+				} else {
+					jQuery( '#form-lote-banco' ).fadeOut();
+				}
 
 			}
 			else if (jQuery.trim(response) in dados) {
